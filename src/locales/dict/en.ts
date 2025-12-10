@@ -15,7 +15,7 @@ export default {
         description: 'I am a passionate developer and curiosist with a strong background in web development. My objective is to create responsive and user-friendly websites using the latest technologies as backend as frontend.',
         viewWork: 'View Proyects',
         contact: 'Contact me',
-    },     
+    },
     skills: {
         title: 'What I do?',
         description: 'I specialize in web development and application deployment services.',
@@ -30,4 +30,22 @@ export default {
         viewProject: 'View Project',
         viewAll: 'View All Projects',
     },
+    cta: {
+        title: "Let's create something amazing together",
+        description: "Always interested in listening to new projects and opportunities. Feel free to contact me and let's talk about your next big idea.",
+        button: "Start Conversation",
+    },
+    footer: {
+        description: "Building beautiful digital experiences with modern design and technology.",
+        navigation: "Navigation",
+        connect: "Connect with me",
+        copyright: "All rights reserved.",
+    },
+    placeholder: {
+        soon: "This page is coming soon. Check back later!",
+    },
+    theme: {
+        toggle: "Toggle theme",
+    },
+    greeting: "Hello! I'm Franco",
 } as const

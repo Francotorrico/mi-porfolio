@@ -29,5 +29,24 @@ export default {
         description: 'Algunos de mis proyectos',
         viewProject: 'Ver Proyecto',
         viewAll: 'Ver todos los proyectos',
-    },     
+    },
+    cta: {
+        title: 'Creemos juntos algo increíble',
+        description: "Siempre estoy interesado en escuchar sobre nuevos proyectos y oportunidades. Siéntete libre de contactarme y hablemos sobre tu próxima gran idea.",
+        button: 'Iniciar Conversación',
+    },
+    footer: {
+        //español
+        description: "Construyendo experiencias digitales hermosas con diseño moderno y tecnología.",
+        navigation: "Navegación",
+        connect: "Conecta conmigo",
+        copyright: "Todos los derechos reservados.",
+    },
+    placeholder: {
+        soon: "Esta página está en desarrollo. Vuelve más tarde!",
+    },
+    theme: {
+        toggle: "Cambiar tema",
+    },
+    greeting: "Hola! , soy Franco. ",
 } as const

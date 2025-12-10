@@ -4,9 +4,9 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 import ThemeSwitcher from "./ThemeSwitcher";
-import { useI18n } from "../../locales/client";
+import { useI18n } from "../locales/client";
 import LanguageSwitcher from "./LanguageSwitcher";
-import { useMenu } from "../../context/MenuContext";
+import { useMenu } from "../context/MenuContext";
 
 export function Header() {
 

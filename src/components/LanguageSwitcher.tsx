@@ -1,5 +1,5 @@
 'use client'
-import { useChangeLocale, useCurrentLocale } from '../../locales/client'
+import { useChangeLocale, useCurrentLocale } from '../locales/client'
 
 export default function LanguageSwitcher() {
   const changeLocale = useChangeLocale() // Esto es una función

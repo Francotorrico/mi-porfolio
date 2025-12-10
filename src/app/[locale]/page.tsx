@@ -5,6 +5,7 @@ import { useI18n, useCurrentLocale } from "../../locales/client";
 
 import { ArrowRight, Code2, Palette, Rocket } from "lucide-react";
 import Link from "next/link";
+import AvatarGreet from "../../components/AvatarGreet";
 
 export default function Home() {
 
@@ -48,46 +49,59 @@ export default function Home() {
     ">
 
       {/* Hero Section */}
-      <section className="mb-16">
-        <p className="text-primary font-semibold
+      <section className="mb-16 md:ml-16 lg:ml-24 xl:ml-52 transition-all duration-500 ease-in-out">
+        <div
+          className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div
+            className="flex flex-col gap-6"
+          >
+
+            <p className="text-primary font-semibold
           text-md uppercase tracking-widest mb-2
-          
-        ">
-          {t('hero.subtitle')}
-        </p>
-        <h1 className="text-4xl font-bold mb-4 
+          ">
+              {t('hero.subtitle')}
+            </p>
+            <h1 className="text-4xl font-bold mb-4 
           leading-tight sm:text-5xl 
         ">
-          <span className=" gradient-text">
-            {t('hero.title').split(' ')[0]}
-          </span>{" "}
-          {t('hero.title').substring(t('hero.title').indexOf(' ') + 1)}
-        </h1>
-        <p className=" text-base text-muted-foreground mb-6">
-          {t('hero.description')}
-        </p>
-        <div
-          className="flex flex-col gap-3 pt-6"
-        >
-          <button className="
+              <span className=" gradient-text">
+                {t('hero.title').split(' ')[0]}
+              </span>{" "}
+              {t('hero.title').substring(t('hero.title').indexOf(' ') + 1)}
+            </h1>
+            <p className=" text-base text-muted-foreground mb-6">
+              {t('hero.description')}
+            </p>
+            <div
+              className="flex flex-col gap-3 pt-6 md:flex-row"
+            >
+              <button className="
             px-6 py-3 rounded-lg bg-primary
             text-primary-foreground font-semibold flex items-center gap-2
             justify-center hover:opacity-80 
             hover:scale-101 transition-all duration-300 ease-in-out
             
           ">
-            {t('hero.viewWork')}
-            <ArrowRight size={20} />
-          </button>
-          <button className="px-6 py-3 rounded-lg border border-border text-foreground font-semibold hover:bg-secondary
+                {t('hero.viewWork')}
+                <ArrowRight size={20} />
+              </button>
+              <button className="px-6 py-3 rounded-lg border border-border text-foreground font-semibold hover:bg-secondary
           ">
-            {t('hero.contact')}
-          </button>
-        </div>
-        <div className="hidden md:flex justify-center animate-float">
+                {t('hero.contact')}
+              </button>
+            </div>
+          </div>
+          <div className="hidden md:flex justify-center animate-float">
 
-          <div className="w-80 h-80 rounded-2xl bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 border border-border/50 glow-effect" />
+            <div className="w-80 h-80 rounded-2xl bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 border border-border/50 glow-effect"
+            >
+              <div className="w-full h-full flex items-center justify-center">
+                <AvatarGreet />
+              </div>
+            </div>
+          </div>
         </div>
+
       </section>
 
       {/* {skills section */}
@@ -162,7 +176,7 @@ export default function Home() {
               return (
                 <div
                   key={project.id}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-center"
+                  className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center"
                 >
 
                   {/* image */}
@@ -247,6 +261,34 @@ export default function Home() {
           </div>
 
 
+        </div>
+
+      </section>
+
+      {/* iniciar conversacion */}
+
+      <section
+        className="py-12 sm:py-20 bg-card/50"
+      >
+        <div
+          className="max-w-7xl mx-auto text-center px-4"
+        >
+          <h1
+            className="font-bold text-3xl mb-4 sm:text-5xl sm:mb-6 text-primary/80 "
+          >
+            {t("cta.title")}
+          </h1>
+          <p className="text-base sm:text-lg text-muted-foreground
+          mb-6 sm:mb-8 max-w-2xl mx-auto">
+            {t("cta.description")}
+          </p>
+          <button
+            className="w-full sm:w-auto px-6 sm:px-8 py-3
+          sm:p-4 rounded-lg bg-primary text-primary-foreground
+          font-semibold hover:opacity-80 transition-all duration-200 hover:scale-[1.03]"
+          >
+            {t("cta.button")}
+          </button>
         </div>
       </section>
     </main>
