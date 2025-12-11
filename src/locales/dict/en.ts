@@ -71,5 +71,16 @@ export default {
         success: "Message sent successfully!",
         sending: "Sending...",
     },
-    
+    project1: {
+        title: "SolidarIA",
+        description: "Platform to search for NGOs, explore campaigns, and make donations via Mercado Pago, featuring a chatbot assistant.",
+    },
+    project2: {
+        title: "AI Medical Assistant",
+        description: "Development of a secure API for a diagnostic assistant with AI predictions using Machine Learning models.",
+    },
+    project3: {
+        title: "Torri Task App - Task Manager",
+        description: "Creation, filtering, and persistence in localStorage. Responsive interface, dark mode, and multi-language support.",
+    },
 } as const

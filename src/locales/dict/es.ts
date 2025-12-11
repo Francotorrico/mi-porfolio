@@ -72,6 +72,17 @@ export default {
         success: "¡Mensaje enviado con éxito!",
         sending: "Enviando...",
     },
-   
+    project1: {
+        title: "SolidarIA",
+        description: "Plataforma para buscar ONGs, explorar campañas y realizar donaciones mediante Mercado Pago, y asistente chatbot.",
+    },
+    project2: {
+        title: "Asistente médico de IA",
+        description: "Desarrollo de API segura para un asistente de diagnósticos con predicciones de IA utilizando modelos de Machine Learning",
+    },
+    project3: {
+        title: "Torri Task App - Gestor de tareas",
+        description: "Creación, filtro y persistencia en localStorage. Interfaz responsive, modo oscuro y soporte multilenguaje.",
+    },
 
 } as const

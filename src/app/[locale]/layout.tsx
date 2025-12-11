@@ -15,6 +15,8 @@ export function generateStaticParams() {
     ];
 }
 
+import { Toaster } from "sonner";
+
 export default async function LocaleLayout({
     children,
     params
@@ -29,6 +31,7 @@ export default async function LocaleLayout({
             <Header />
             <main>{children}</main>
             <Footer />
+            <Toaster richColors position="top-center" />
         </I18nProviderClient>
     );
 }

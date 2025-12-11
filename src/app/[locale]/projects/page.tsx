@@ -2,35 +2,55 @@
 import { useI18n, useCurrentLocale } from "../../../locales/client";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import ProjectModalMui, { LinkItem } from "../../../components/ProjectModalMui";
 
 export default function Projects() {
     const t = useI18n();
     const currentLocale = useCurrentLocale();
 
     // Reusing the projects data structure (in a real app, this might come from a shared data file or API)
-    const projects = [
-        {
-            id: 1,
-            titleKey: "project1.title",
-            descriptionKey: "project1.description",
-            tags: ["React", "Node.js", "PostgreSQL"],
-            image: "https://images.unsplash.com/photo-1460925895917-aae19106c108?w=600&h=400&fit=crop",
-        },
-        {
-            id: 2,
-            titleKey: "project2.title",
-            descriptionKey: "project2.description",
-            tags: ["Diseño", "Figma", "Componentes"],
-            image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop",
-        },
-        {
-            id: 3,
-            titleKey: "project3.title",
-            descriptionKey: "project3.description",
-            tags: ["React", "TypeScript", "Tailwind"],
-            image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-        },
-    ];
+    const projects: {
+        id: number;
+        titleKey: string;
+        descriptionKey: string;
+        tags: string[];
+        image: string;
+        links: LinkItem[];
+    }[] = [
+            {
+                id: 1,
+                titleKey: "project1.title",
+                descriptionKey: "project1.description",
+                tags: ["React", "NestJS", "PostgreSQL", "Docker", "AWS", "Mercado Pago", "NextJS"],
+                image: "/projects/solidaria.PNG",
+                links: [
+                    { label: "Frontend Repo", type: "repo", url: "https://github.com/Danadty/solidarIA-Front" },
+                    { label: "Backend Repo", type: "repo", url: "https://github.com/Danadty/solidarIA" },
+                    { label: "Live Demo", type: "web", url: "https://solidariafrontappong.vercel.app" },
+                ]
+            },
+            {
+                id: 2,
+                titleKey: "project2.title",
+                descriptionKey: "project2.description",
+                tags: ["Python", "Machine Learning", "PostgreSQL", "JWT"],
+                image: "/projects/dimaia.PNG",
+                links: [
+                    { label: "Live Demo", type: "web", url: "https://dimaia.vercel.app" },
+                ]
+            },
+            {
+                id: 3,
+                titleKey: "project3.title",
+                descriptionKey: "project3.description",
+                tags: ["React", "TypeScript", "Tailwind", "LocalStorage"],
+                image: "/projects/gestorTareas.PNG",
+                links: [
+                    { label: "Frontend Repo", type: "repo", url: "https://github.com/Francotorrico/full_stack_exercises/tree/main/Back/30%20-%20React%20Proyects/List-Tasks" },
+                    { label: "Live Demo", type: "web", url: "https://list-tasks-sigma.vercel.app" },
+                ]
+            },
+        ];
 
     return (
         <main className="min-h-screen bg-background/90 text-foreground px-4 pt-32 sm:px-6 lg:px-8 backdrop-blur-md">
@@ -82,13 +102,15 @@ export default function Projects() {
                                         ))}
                                     </div>
 
-                                    <button className="flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all mt-auto group/btn">
-                                        {t("work.viewProject")}
-                                        <ArrowRight
-                                            size={16}
-                                            className="transition-transform group-hover/btn:translate-x-1"
-                                        />
-                                    </button>
+                                    <ProjectModalMui links={project.links}>
+                                        <button className="flex items-center gap-2 text-primary font-semibold text-sm hover:gap-3 transition-all mt-auto group/btn">
+                                            {t("work.viewProject")}
+                                            <ArrowRight
+                                                size={16}
+                                                className="transition-transform group-hover/btn:translate-x-1"
+                                            />
+                                        </button>
+                                    </ProjectModalMui>
                                 </div>
                             </div>
                         );

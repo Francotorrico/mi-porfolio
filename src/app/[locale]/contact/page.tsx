@@ -3,6 +3,8 @@ import { useI18n } from "../../../locales/client";
 import { Mail, Send, MapPin, Phone } from "lucide-react";
 import { useState } from "react";
 
+import { toast } from "sonner";
+
 export default function Contact() {
     const t = useI18n();
     const [loading, setLoading] = useState(false);
@@ -18,19 +20,23 @@ export default function Contact() {
             message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
         };
 
-        const res = await fetch("/api/contact", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
-        });
+        try {
+            const res = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData),
+            });
 
-        setLoading(false);
-
-        if (res.ok) {
-            alert(t("contactPage.success"));
-            form.reset();
-        } else {
-            alert("Error al enviar el mensaje.");
+            if (res.ok) {
+                toast.success(t("contactPage.success"));
+                form.reset();
+            } else {
+                toast.error("Error al enviar el mensaje.");
+            }
+        } catch (error) {
+            toast.error("Error de red o servidor.");
+        } finally {
+            setLoading(false);
         }
     };
 

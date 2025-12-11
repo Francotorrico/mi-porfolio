@@ -6,35 +6,55 @@ import { useI18n, useCurrentLocale } from "../../locales/client";
 import { ArrowRight, Code2, Palette, Rocket } from "lucide-react";
 import Link from "next/link";
 import AvatarGreet from "../../components/AvatarGreet";
+import ProjectModalMui, { LinkItem } from "../../components/ProjectModalMui";
 
 export default function Home() {
 
   const t = useI18n();
   const currentLocale = useCurrentLocale();
   /* proyectos */
-  const projects = [
-    {
-      id: 1,
-      titleKey: "project1.title",
-      descriptionKey: "project1.description",
-      tags: ["React", "Node.js", "PostgreSQL"],
-      image: "https://images.unsplash.com/photo-1460925895917-aae19106c108?w=600&h=400&fit=crop",
-    },
-    {
-      id: 2,
-      titleKey: "project2.title",
-      descriptionKey: "project2.description",
-      tags: ["Diseño", "Figma", "Componentes"],
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop",
-    },
-    {
-      id: 3,
-      titleKey: "project3.title",
-      descriptionKey: "project3.description",
-      tags: ["React", "TypeScript", "Tailwind"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
-    },
-  ];
+  const projects: {
+    id: number;
+    titleKey: string;
+    descriptionKey: string;
+    tags: string[];
+    image: string;
+    links: LinkItem[];
+  }[] = [
+      {
+        id: 1,
+        titleKey: "project1.title",
+        descriptionKey: "project1.description",
+        tags: ["React", "NestJS", "PostgreSQL", "Docker", "AWS", "Mercado Pago", "NextJS"],
+        image: "/projects/solidaria.PNG",
+        links: [
+          { label: "Frontend Repo", type: "repo", url: "https://github.com/Danadty/solidarIA-Front" },
+          { label: "Backend Repo", type: "repo", url: "https://github.com/Danadty/solidarIA" },
+          { label: "Live Demo", type: "web", url: "https://solidariafrontappong.vercel.app" },
+        ]
+      },
+      {
+        id: 2,
+        titleKey: "project2.title",
+        descriptionKey: "project2.description",
+        tags: ["Python", "Machine Learning", "PostgreSQL", "JWT"],
+        image: "/projects/dimaia.PNG",
+        links: [
+          { label: "Live Demo", type: "web", url: "https://dimaia.vercel.app" },
+        ]
+      },
+      {
+        id: 3,
+        titleKey: "project3.title",
+        descriptionKey: "project3.description",
+        tags: ["React", "TypeScript", "Tailwind", "LocalStorage"],
+        image: "/projects/gestorTareas.PNG",
+        links: [
+          { label: "Frontend Repo", type: "repo", url: "https://github.com/Francotorrico/full_stack_exercises/tree/main/Back/30%20-%20React%20Proyects/List-Tasks" },
+          { label: "Live Demo", type: "web", url: "https://list-tasks-sigma.vercel.app" },
+        ]
+      },
+    ];
 
   const skills = [
     { icon: Code2, labelKey: "skills.development", descriptionKey: "skills.developmentDesc" },
@@ -75,20 +95,24 @@ export default function Home() {
             <div
               className="flex flex-col gap-3 pt-6 md:flex-row"
             >
-              <button className="
-            px-6 py-3 rounded-lg bg-primary
-            text-primary-foreground font-semibold flex items-center gap-2
-            justify-center hover:opacity-80 
-            hover:scale-101 transition-all duration-300 ease-in-out
-            
-          ">
-                {t('hero.viewWork')}
-                <ArrowRight size={20} />
-              </button>
-              <button className="px-6 py-3 rounded-lg border border-border text-foreground font-semibold hover:bg-secondary
-          ">
-                {t('hero.contact')}
-              </button>
+              <Link href={`/${currentLocale}/projects`}>
+                <button className="
+              px-6 py-3 rounded-lg bg-primary
+              text-primary-foreground font-semibold flex items-center gap-2
+              justify-center hover:opacity-80 
+              hover:scale-101 transition-all duration-300 ease-in-out
+              
+            ">
+                  {t('hero.viewWork')}
+                  <ArrowRight size={20} />
+                </button>
+              </Link>
+              <Link href={`/${currentLocale}/contact`}>
+                <button className="px-6 py-3 rounded-lg border border-border text-foreground font-semibold hover:bg-secondary
+            ">
+                  {t('hero.contact')}
+                </button>
+              </Link>
             </div>
           </div>
           <div className="hidden md:flex justify-center animate-float">
@@ -223,22 +247,24 @@ export default function Home() {
 
                     </div>
 
-                    <button
-                      className="flex p-2 items-center gap-2 text-primary font-semibold hover:gap-3 transition-all
+                    <ProjectModalMui links={project.links}>
+
+                      <button
+                        className="flex p-2 items-center gap-2 text-primary font-semibold hover:gap-3 transition-all
                       border-t border-t-primary/20
                       hover:border-t-primary
                       border-b border-b-primary/20 hover:border-b-primary
                       rounded-lg"
-                    >
-                      {t('work.viewProject')}
-                      <ArrowRight size={20}
-                        className=""
-                      />
+                      >
+                        {t('work.viewProject')}
+                        <ArrowRight size={20}
+                          className=""
+                        />
 
 
-                    </button>
+                      </button>
 
-
+                    </ProjectModalMui>
                   </div>
                 </div>
 
@@ -282,13 +308,15 @@ export default function Home() {
           mb-6 sm:mb-8 max-w-2xl mx-auto">
             {t("cta.description")}
           </p>
-          <button
-            className="w-full sm:w-auto px-6 sm:px-8 py-3
-          sm:p-4 rounded-lg bg-primary text-primary-foreground
-          font-semibold hover:opacity-80 transition-all duration-200 hover:scale-[1.03]"
-          >
-            {t("cta.button")}
-          </button>
+          <Link href={`/${currentLocale}/contact`}>
+            <button
+              className="w-full sm:w-auto px-6 sm:px-8 py-3
+            sm:p-4 rounded-lg bg-primary text-primary-foreground
+            font-semibold hover:opacity-80 transition-all duration-200 hover:scale-[1.03]"
+            >
+              {t("cta.button")}
+            </button>
+          </Link>
         </div>
       </section>
     </main>
