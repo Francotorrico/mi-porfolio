@@ -2,6 +2,9 @@
 
 pnpm create-next-app@latest .
 
+
+uso nodemailer para enviar correos
+
 Qué significa cada color (todos explicados)
 A continuación explico todas las variables, qué representan, y cómo usarlas.
 

@@ -8,7 +8,9 @@ body {
   color: hsl(var(--foreground));
   min-height: 100%;
 }
-
+.loader{
+  @apply animate-spin h-5 w-5 border-b-2 border-gray-900 rounded-full;
+}
 /* ------------------------------ */
 /* 🎨 TEMA CLARO (por defecto)    */
 /* ------------------------------ */

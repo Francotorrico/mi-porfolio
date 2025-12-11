@@ -49,4 +49,29 @@ export default {
         toggle: "Cambiar tema",
     },
     greeting: "Hola! , soy Franco. ",
+    about: {
+        title: "Sobre Mí",
+        bio: "Soy un Desarrollador Full Stack apasionado con experiencia en la construcción de aplicaciones web modernas. Me encanta aprender nuevas tecnologías y resolver problemas complejos.",
+        experience: "Experiencia",
+        skills: {
+            softSkills: "Comunicación, Trabajo en equipo, Resolución de problemas, Adaptabilidad",
+        },
+        certificates: "Certificados",
+    },
+    projectsPage: {
+        title: "Mis Proyectos",
+        description: "Una colección de proyectos en los que he trabajado, demostrando mis habilidades en desarrollo web y diseño.",
+    },
+    contactPage: {
+        title: "Contáctame",
+        description: "¿Tienes un proyecto en mente o solo quieres saludar? ¡Envíame un mensaje!",
+        name: "Nombre",
+        email: "Correo electrónico",
+        message: "Mensaje",
+        send: "Enviar Mensaje",
+        success: "¡Mensaje enviado con éxito!",
+        sending: "Enviando...",
+    },
+   
+
 } as const

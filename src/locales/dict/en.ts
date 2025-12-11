@@ -48,4 +48,28 @@ export default {
         toggle: "Toggle theme",
     },
     greeting: "Hello! I'm Franco",
+    about: {
+        title: "About Me",
+        bio: "I am a passionate Full Stack Developer with experience in building modern web applications. I love learning new technologies and solving complex problems.",
+        experience: "Experience",
+        skills: {
+            softSkills: "Communication, Teamwork, Problem Solving, Adaptability",
+        },
+        certificates: "Certificates",
+    },
+    projectsPage: {
+        title: "My Projects",
+        description: "A collection of projects I've worked on, demonstrating my skills in web development and design.",
+    },
+    contactPage: {
+        title: "Get in Touch",
+        description: "Have a project in mind or just want to say hi? Send me a message!",
+        name: "Name",
+        email: "Email",
+        message: "Message",
+        send: "Send Message",
+        success: "Message sent successfully!",
+        sending: "Sending...",
+    },
+    
 } as const

@@ -7,6 +7,13 @@ export const metadata = {
     title: "Inicio | Franco Portfolio",
     description: "Página principal del portfolio de Franco.",
 };
+// 👇 IMPORTANTE para GitHub Pages
+export function generateStaticParams() {
+    return [
+        { locale: "es" },
+        { locale: "en" },
+    ];
+}
 
 export default async function LocaleLayout({
     children,

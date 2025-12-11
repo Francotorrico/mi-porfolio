@@ -248,7 +248,7 @@ export default function Home() {
 
             <div className="text-center mt-16">
               <Link
-                href={`/${currentLocale}/colores`}
+                href={`/${currentLocale}/projects`}
                 className="inline-flex items-center gap-2 px-8 py-3 rounded-lg border border-border text-foreground font-semibold hover:bg-secondary transition-all"
               >
                 <p>
