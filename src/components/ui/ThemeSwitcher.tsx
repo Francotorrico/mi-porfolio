@@ -17,9 +17,9 @@ export default function ThemeSwitcher() {
             className="p-2 rounded-lg border border-border hover:bg-gray-200 transition-colors"
         >
             {theme === "light" ? (
-                <Moon className="w-5 h-5 " />   // gris suave
+                <Moon className="w-5 h-5 " />
             ) : (
-                <Sun className="w-5 h-5 text-yellow-500" />          // sol amarillo
+                <Sun className="w-5 h-5 text-yellow-500" />
             )}
         </button>
     );

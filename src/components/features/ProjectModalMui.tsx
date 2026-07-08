@@ -32,12 +32,10 @@ export default function ProjectLinksToggle({ children, links }: Props) {
 
     return (
     <div className="w-full">
-      {/* BOTÓN QUE ABRE EL DESPLIEGUE */}
       <span onClick={() => setOpen(!open)} className="cursor-pointer">
         {children}
       </span>
 
-      {/* DESPLEGABLE IGUAL A TU ESTILO */}
       <div
         className={`transition-all duration-300 overflow-hidden ${
           open ? "max-h-[999px] mt-3" : "max-h-0"

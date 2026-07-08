@@ -1,8 +1,9 @@
 "use client";
-import { useI18n, useCurrentLocale } from "../../../locales/client";
+import { useI18n, useCurrentLocale } from "../../../lib/locales/client";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import ProjectModalMui, { LinkItem } from "../../../components/ProjectModalMui";
+import ProjectModalMui, { LinkItem } from "../../../components/features/ProjectModalMui";
+import ImageCarousel from "../../../components/ui/ImageCarousel";
 
 export default function Projects() {
     const t = useI18n();
@@ -14,15 +15,26 @@ export default function Projects() {
         titleKey: string;
         descriptionKey: string;
         tags: string[];
-        image: string;
+        images: string[];
         links: LinkItem[];
     }[] = [
+            {
+                id: 4,
+                titleKey: "project4.title",
+                descriptionKey: "project4.description",
+                tags: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
+                images: ["/projects/invitacion-card.png","/projects/invitacion-home.png"],
+                links: [
+                    { label: "Repo", type: "repo", url: "https://github.com/Francotorrico/invitation-event-card" },
+                    { label: "Live Demo", type: "web", url: "https://invitation-event-card.vercel.app" },
+                ]
+            },
             {
                 id: 1,
                 titleKey: "project1.title",
                 descriptionKey: "project1.description",
                 tags: ["React", "NestJS", "PostgreSQL", "Docker", "AWS", "Mercado Pago", "NextJS"],
-                image: "/projects/solidaria.PNG",
+                images: ["/projects/solidaria.PNG"],
                 links: [
                     { label: "Frontend Repo", type: "repo", url: "https://github.com/Danadty/solidarIA-Front" },
                     { label: "Backend Repo", type: "repo", url: "https://github.com/Danadty/solidarIA" },
@@ -34,7 +46,7 @@ export default function Projects() {
                 titleKey: "project2.title",
                 descriptionKey: "project2.description",
                 tags: ["Python", "Machine Learning", "PostgreSQL", "JWT"],
-                image: "/projects/dimaia.PNG",
+                images: ["/projects/dimaia.PNG"],
                 links: [
                     { label: "Live Demo", type: "web", url: "https://dimaia.vercel.app" },
                 ]
@@ -44,7 +56,7 @@ export default function Projects() {
                 titleKey: "project3.title",
                 descriptionKey: "project3.description",
                 tags: ["React", "TypeScript", "Tailwind", "LocalStorage"],
-                image: "/projects/gestorTareas.PNG",
+                images: ["/projects/gestorTareas.PNG"],
                 links: [
                     { label: "Frontend Repo", type: "repo", url: "https://github.com/Francotorrico/full_stack_exercises/tree/main/Back/30%20-%20React%20Proyects/List-Tasks" },
                     { label: "Live Demo", type: "web", url: "https://list-tasks-sigma.vercel.app" },
@@ -72,21 +84,20 @@ export default function Projects() {
                                 className="group flex flex-col rounded-xl glass-effect overflow-hidden border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                             >
                                 {/* image */}
-                                <div className="relative h-48 sm:h-60 w-full overflow-hidden">
-                                    <img
-                                        src={project.image}
+                                <div className="relative h-48 sm:h-60 w-full overflow-hidden group">
+                                    <ImageCarousel
+                                        images={project.images}
                                         alt={t(project.titleKey as keyof typeof t)}
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                     />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                    <div className="absolute inset-0 bg-linear-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                                 </div>
 
                                 {/* content */}
-                                <div className="p-6 flex flex-col flex-grow">
+                                <div className="p-6 flex flex-col grow">
                                     <h3 className="font-bold text-xl mb-2 group-hover:text-primary transition-colors">
                                         {t(project.titleKey as keyof typeof t)}
                                     </h3>
-                                    <p className="text-muted-foreground mb-4 text-sm flex-grow line-clamp-3">
+                                    <p className="text-muted-foreground mb-4 text-sm grow line-clamp-3">
                                         {t(project.descriptionKey as keyof typeof t)}
                                     </p>
 

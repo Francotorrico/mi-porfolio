@@ -1,7 +1,7 @@
-import { I18nProviderClient } from "../../locales/client";
+import { I18nProviderClient } from "../../lib/locales/client";
 import { ReactNode } from "react";
-import { Header } from "../../components/Header";
-import Footer from "../../components/Footer";
+import { Header } from "../../components/features/Header";
+import Footer from "../../components/features/Footer";
 
 export const metadata = {
     title: "Inicio | Franco Portfolio",

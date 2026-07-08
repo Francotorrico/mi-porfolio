@@ -1,4 +1,4 @@
-import ColorPreview from "./ColorPreview";
+import ColorPreview from "../../../components/features/ColorPreview";
 
 export const metadata = {
   title: "Colores | Franco Portfolio",

@@ -1,13 +1,12 @@
 "use client";
 import Link from "next/link";
-import { Github, Icon, Linkedin, Mail } from "lucide-react";
-import { useI18n } from "../locales/client";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { useI18n } from "../../lib/locales/client";
 
 export default function Footer() {
 
     const t = useI18n()
     const currentYear = new Date().getFullYear()
-
 
     const socialLinks = [
         { icon: Github, href: "https://github.com/Francotorrico", label: "GitHub" },
@@ -31,7 +30,6 @@ export default function Footer() {
             "
             >
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                    {/* marca + descriptio */}
                     <div className="text-center md:text-left">
                         <h3 className="font-bold text-lg mb-3 text-foreground">
                             Franco Torrico
@@ -41,7 +39,6 @@ export default function Footer() {
                         </p>
                     </div>
 
-                    {/* navegation */}
                     <div className="text-center md:text-left">
                         <h4 className="font-semibold text-foreground mb-3">
                             {t("footer.navigation")}
@@ -60,7 +57,6 @@ export default function Footer() {
                         </ul>
                     </div>
 
-                    {/* redes sociales  */}
                     <div className="text-center md:text-left">
                         <h4 className="font-semibold text-foreground mb-3">
                             {t("footer.connect")}
@@ -80,10 +76,6 @@ export default function Footer() {
                     </div>
                 </div>
 
-
-
-
-                {/* copyright */}
 
                 <div
                     className="border-t border-t-border/10 pt-6"

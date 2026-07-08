@@ -192,7 +192,7 @@ body {
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent;
+    @apply bg-linear-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent;
   }
 
   .glow-effect {
@@ -227,6 +227,8 @@ body {
     transform: translateY(-20px);
   }
 }
+
+
 
 
 /* ---------------------------------------- */
@@ -351,7 +353,7 @@ Variable CSS	Para qué se usa	Ejemplo
 
 @layer components {
   .gradient-text {
-    @apply bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 text-transparent bg-clip-text;
+    @apply bg-linear-to-r from-cyan-400 via-blue-500 to-purple-600 text-transparent bg-clip-text;
   }
 
   .glass-effect {

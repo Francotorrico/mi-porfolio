@@ -1,32 +1,48 @@
 "use client";
 import Image from "next/image";
-// import { Header } from "../components/Header";
-import { useI18n, useCurrentLocale } from "../../locales/client";
+import { useState } from "react";
+import { useI18n, useCurrentLocale } from "../../lib/locales/client";
+import { useRouter } from "next/navigation";
 
 import { ArrowRight, Code2, Palette, Rocket } from "lucide-react";
 import Link from "next/link";
-import AvatarGreet from "../../components/AvatarGreet";
-import ProjectModalMui, { LinkItem } from "../../components/ProjectModalMui";
+import AvatarGreet from "../../components/features/AvatarGreet";
+import ProjectModalMui, { LinkItem } from "../../components/features/ProjectModalMui";
+import PillTabs from "../../components/ui/PillTabs";
+import ImageCarousel from "../../components/ui/ImageCarousel";
 
 export default function Home() {
 
   const t = useI18n();
   const currentLocale = useCurrentLocale();
+  const router = useRouter();
+  const [filter, setFilter] = useState<'featured' | 'all'>('featured');
   /* proyectos */
   const projects: {
     id: number;
     titleKey: string;
     descriptionKey: string;
     tags: string[];
-    image: string;
+    images: string[];
     links: LinkItem[];
   }[] = [
+      {
+        id: 4,
+        titleKey: "project4.title",
+        descriptionKey: "project4.description",
+        tags: ["Next.js", "TypeScript", "Tailwind CSS", "React"],
+        images: ["/projects/invitacion-home.png", "/projects/invitacion-card.png"],
+        links: [
+          { label: "Repo", type: "repo", url: "https://github.com/Francotorrico/invitation-event-card" },
+          { label: "Live Demo", type: "web", url: "https://invitation-event-card.vercel.app" },
+        ]
+      },
       {
         id: 1,
         titleKey: "project1.title",
         descriptionKey: "project1.description",
         tags: ["React", "NestJS", "PostgreSQL", "Docker", "AWS", "Mercado Pago", "NextJS"],
-        image: "/projects/solidaria.PNG",
+        images: ["/projects/solidaria.PNG"],
         links: [
           { label: "Frontend Repo", type: "repo", url: "https://github.com/Danadty/solidarIA-Front" },
           { label: "Backend Repo", type: "repo", url: "https://github.com/Danadty/solidarIA" },
@@ -38,7 +54,7 @@ export default function Home() {
         titleKey: "project2.title",
         descriptionKey: "project2.description",
         tags: ["Python", "Machine Learning", "PostgreSQL", "JWT"],
-        image: "/projects/dimaia.PNG",
+        images: ["/projects/dimaia.PNG"],
         links: [
           { label: "Live Demo", type: "web", url: "https://dimaia.vercel.app" },
         ]
@@ -48,7 +64,7 @@ export default function Home() {
         titleKey: "project3.title",
         descriptionKey: "project3.description",
         tags: ["React", "TypeScript", "Tailwind", "LocalStorage"],
-        image: "/projects/gestorTareas.PNG",
+        images: ["/projects/gestorTareas.PNG"],
         links: [
           { label: "Frontend Repo", type: "repo", url: "https://github.com/Francotorrico/full_stack_exercises/tree/main/Back/30%20-%20React%20Proyects/List-Tasks" },
           { label: "Live Demo", type: "web", url: "https://list-tasks-sigma.vercel.app" },
@@ -81,6 +97,7 @@ export default function Home() {
           ">
               {t('hero.subtitle')}
             </p>
+
             <h1 className="text-4xl font-bold mb-4 
           leading-tight sm:text-5xl 
         ">
@@ -117,7 +134,7 @@ export default function Home() {
           </div>
           <div className="hidden md:flex justify-center animate-float">
 
-            <div className="w-80 h-80 rounded-2xl bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 border border-border/50 glow-effect"
+            <div className="w-80 h-80 rounded-2xl bg-linear-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20 border border-border/50 glow-effect"
             >
               <div className="w-full h-full flex items-center justify-center">
                 <AvatarGreet />
@@ -180,23 +197,35 @@ export default function Home() {
       >
 
         <div className="max-w-7xl mx-auto">
-          {/* header del div */}
-          <div
-            className="mb-12"
-          >
+          <div className="mb-12">
             <h2 className="font-bold text-4xl mb-4">
               {t('work.title')}
             </h2>
-            <p className="text-muted-foreground max-w-xl">
+            <p className="text-muted-foreground max-w-xl mb-8">
               {t('work.description')}
             </p>
+
+            <PillTabs
+              tabs={[
+                { key: 'featured', label: t('work.principales') },
+                { key: 'all', label: t('work.todos') },
+              ]}
+              active={filter}
+              onChange={(key) => {
+                if (key === 'all') {
+                  router.push(`/${currentLocale}/projects`);
+                } else {
+                  setFilter(key as 'featured' | 'all');
+                }
+              }}
+            />
           </div>
 
           {/* projects */}
           <div
             className="space-y-12"
           >
-            {projects.map((project, index) => {
+            {projects.slice(0, 3).map((project, index) => {
               return (
                 <div
                   key={project.id}
@@ -210,8 +239,9 @@ export default function Home() {
                       className="relative overflow-hidden rounded-xl glass-effect h-64 sm:h-80 md:h-96 glow-effect group"
                     >
 
-                      <img src={project.image} alt={t(project.titleKey as keyof typeof t)}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out"
+                      <ImageCarousel
+                        images={project.images}
+                        alt={t(project.titleKey as keyof typeof t)}
                       />
                     </div>
                   </div>

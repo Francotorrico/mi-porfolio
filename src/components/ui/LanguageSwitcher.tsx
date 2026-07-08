@@ -1,9 +1,22 @@
 'use client'
-import { useChangeLocale, useCurrentLocale } from '../locales/client'
+import { useRouter, usePathname } from 'next/navigation'
+import { useCurrentLocale } from '../../lib/locales/client'
 
 export default function LanguageSwitcher() {
-  const changeLocale = useChangeLocale() // Esto es una función
-  const currentLocale = useCurrentLocale() // Esto devuelve el idioma actual
+  const router = useRouter()
+  const pathname = usePathname()
+  const currentLocale = useCurrentLocale()
+
+  function changeLocale(newLocale: string) {
+    if (newLocale === currentLocale) return
+    const pathWithoutLocale = pathname.startsWith(`/${currentLocale}/`)
+      ? pathname.replace(`/${currentLocale}`, '')
+      : pathname === `/${currentLocale}`
+        ? '/'
+        : pathname
+    router.push(`/${newLocale}${pathWithoutLocale}`, { scroll: false })
+    router.refresh()
+  }
 
   return (
     <div className='flex items-center gap-1 border border-border rounded-lg p-1 bg-secondary'>
