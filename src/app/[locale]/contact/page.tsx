@@ -69,7 +69,7 @@ export default function Contact() {
 
     const contactItems = [
         { icon: Mail, label: t("contactPage.email"), value: "francotorrico1999@gmail.com", href: "mailto:francotorrico1999@gmail.com" },
-        { icon: Phone, label: t("contactPage.phone"), value: t("contactPage.phoneValue"), href: "tel:+5493624999999" },
+        // { icon: Phone, label: t("contactPage.phone"), value: t("contactPage.phoneValue"), href: "tel:+5493624999999" },
         { icon: MapPin, label: t("contactPage.location"), value: t("contactPage.locationValue") },
         { icon: Linkedin, label: t("contactPage.linkedin"), value: "Franco Torrico", href: "https://linkedin.com/in/francotorrico" },
         { icon: Github, label: t("contactPage.github"), value: "Francotorrico", href: "https://github.com/Francotorrico" },
